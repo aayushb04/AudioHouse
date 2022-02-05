@@ -1,6 +1,8 @@
 html {
-    box-sizing: border-box;
     font-size: 16px;
+}
+*{
+    box-sizing: border-box;
 }
 
 body,
@@ -22,6 +24,13 @@ ul {
 ol,
 ul {
     list-style: none;
+}
+
+button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 img {
