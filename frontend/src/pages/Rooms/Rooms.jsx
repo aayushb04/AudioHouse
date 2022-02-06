@@ -1,87 +1,32 @@
 import React from 'react';
 import RoomCard from '../../components/RoomCard/RoomCard';
-import styles from './Room.module.css';
+import styles from './Rooms.module.css';
 import AddRoomModal from'../../components/AddRoomModal/AddRoomModal';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import { getAllRooms } from '../../http';
 
 
-const rooms = [
-    {
-        id: 1,
-        topic: 'which framework is best for frontend ?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar:'/images/monkey-avatar.png',
-            },
-            {
-                id: 2,
-                name: 'John Doe',
-                avatar:'/images/monkey-avatar.png',
-            },
-        ],
-        totalPeople:40,
-    },
-    {
-        id: 2,
-        topic: 'which framework is best for frontend ?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar:'/images/monkey-avatar.png',
-            },
-            {
-                id: 2,
-                name: 'John Doe',
-                avatar:'/images/monkey-avatar.png',
-            },
-        ],
-        totalPeople:40,
-    },
-    {
-        id: 3,
-        topic: 'which framework is best for frontend ?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar:'/images/monkey-avatar.png',
-            },
-            {
-                id: 2,
-                name: 'John Doe',
-                avatar: '/images/monkey-avatar.png',
-            },
-        ],
-        totalPeople:40,
-    },
-    {
-        id: 4,
-        topic: 'which framework is best for frontend ?',
-        speakers: [
-            {
-                id: 1,
-                name: 'John Doe',
-                avatar: '/images/monkey-avatar.png',
-            },
-            {
-                id: 2,
-                name: 'John Doe',
-                avatar:'/images/monkey-avatar.png',
-            },
-        ],
-        totalPeople:40,
-    },
-]
+// const rooms = [
+    
+// ]
 
 const Rooms = () => {
     const [showModal, setShowModal] = useState(false);
+    const [rooms, setRooms] = useState([]);
+
+    useEffect(() => {
+        const fetchRooms = async () => {
+            const { data } = await getAllRooms();
+            setRooms(data);
+        };
+        fetchRooms();
+    }, []);
+    
 
     function openModal() {
         setShowModal(true);
     }
+
 
     return (
         <>

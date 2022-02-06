@@ -46,8 +46,8 @@ const Navigation = () => {
                                     ? user.avatar
                                     : '/images/monkey-avatar.png'
                             }
-                            width="40px"
-                            height="40px"
+                            width="40"
+                            height="40"
                             alt="avatar"
                         />
                     </Link>
